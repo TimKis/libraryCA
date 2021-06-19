@@ -35,15 +35,44 @@ class Media {
     addRating(myRating) {
       this._ratings.push(myRating);
     }
-  }
+  };
+  class Book extends Media{
+    constructor(autor, title, pages){
+      super(title);
+      this._autor = autor;
+      this._pages = pages;
+    }
   
-  const Billy = new Media('Billy Movie');
-  console.log(Billy);
-  Billy.addRating(4)
-  Billy.addRating(3)
-  Billy.addRating(5)
-  Billy.addRating(6)
-  console.log(Billy.ratings);
-  console.log(Billy.getAverageRating());
-  console.log(Billy);
+    get autor(){
+      return this._autor;
+    }
+  
+    get pages(){
+      return this._pages;
+    }
+  };
+  
+  class Movie extends Media{
+    constructor(director, title, runTime){
+      super(title);
+      this._director = director;
+      this._runTime = runTime;
+    }
+  
+    get director(){
+      return this._director;
+    }
+  
+    get runTime(){
+      return this._runTime; 
+    }
+  };
+  
+  const historyOfEverything = new Book('Bill Bryson', 'A Short History of Nearly Everything', 544);
+  historyOfEverything.toggleCheckOutStatus();
+  console.log(historyOfEverything.isCheckedOut);
+  historyOfEverything.addRating(4, 5, 5);
+  console.log(historyOfEverything.getAverageRating());
+  
+  const speed = new Movie('Jan de Bont', 'Speed', 116);
   
